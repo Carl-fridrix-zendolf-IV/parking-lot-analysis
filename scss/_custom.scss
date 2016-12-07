@@ -1,0 +1,75 @@
+@media (max-width: 600px) {
+    #responsive-menu {
+        position: absolute;
+        left: 35px;
+        top: 15px;
+
+        z-index: 10;
+
+        .top-bar {
+            background: transparent;
+        }
+
+        .row {
+            background-color: rgba($dark-gray, 0.7);
+            flex-direction: column;
+            border: 3px solid #757575;
+            padding-top: 10px;
+            margin-left: initial;
+            border-radius: 10px;
+            border-top-left-radius: 0;
+        }
+    }
+
+    .top-bar-title {
+        width: 100%;
+        margin: 0;
+        display: block !important;
+    }
+
+    .dashboard time-intervals, .dashboard .analysis-text {
+        display: none;
+    }
+
+    .time-filters {
+        flex-direction: row !important;
+        margin: 0 !important;
+    }
+}
+
+app-root {
+    .container {
+        margin-top: 0px;
+
+        .top-bar {
+            margin-bottom: 25px;
+        }
+
+        .top-bar-title {
+            display: none;
+        }
+
+        .time-filters {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            margin-bottom: 50px;
+        }
+
+        .swiper-container {
+            width: 100%;
+        }
+    }
+}
+
+select {
+    border-width: 3px !important;
+    border-color: #FF9800 !important;
+}
+select:focus {
+    outline: none;
+}
+select:disabled {
+    background: $warning-color !important;
+    opacity: .5;
+}

@@ -1,0 +1,84 @@
+<div class="container">
+
+    <div class="top-bar">
+        <div class="top-bar-title">
+            <div class="row">
+                <div class="small-2 columns">
+                    <div data-responsive-toggle="responsive-menu" data-hide-for="medium">
+                        <button class="menu-icon dark" type="button" data-toggle></button>
+                    </div>
+                </div>
+
+                <div class="small-10 columns">
+                    <time-intervals
+                        *ngIf="mobile"
+                        [timeframe]="time"
+                        (changeTimeFrame)="handleTimeFrameChange($event)"
+                    ></time-intervals>
+                </div>
+            </div>
+        </div>
+        <div id="responsive-menu">
+            <div class="top-bar">
+                <div class="row">
+                    <div class="medium-4 columns">
+                        <select [(ngModel)]="selectedDay" (ngModelChange)="changeDay($event)">
+                            <option *ngFor="let day of days">{{day}}</option>
+                        </select>
+                    </div>
+
+                    <div class="medium-4 columns">
+                        <button type="button" class="button expanded warning" (click)="showAllIntervals()">All Time</button>
+                    </div>
+
+                    <div class="medium-4 columns">
+                        <select disabled>
+                            <option>Select Parking Lot</option>
+                            <option>one</option>
+                            <option>two</option>
+                            <option>three</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row dashboard">
+        <div class="medium-9 columns">
+            <div *ngIf="loading" class="text-center">
+                <img src="../assets/icons/spinner.svg" alt="Loading..">
+            </div>
+
+            <div *ngIf="error" class="text-center">
+                <img src="../assets/icons/warning.svg" alt="Warning!">
+                <p class="text-center">
+                    Something went wrong.
+                    <br/>
+                    Please, try again!
+                    <br/>
+                    <br/>
+                    <button class="button small warning" (click)="ngOnInit()">Try again</button>
+                </p>
+            </div>
+
+            <canvas #chart [hidden]="!loading && !error"></canvas>
+        </div>
+        <div class="medium-3 columns">
+            <hr />
+            <p class="analysis-text">Select the range of analysis</p>
+
+            <time-intervals
+                *ngIf="!mobile"
+                [timeframe]="time"
+                (changeTimeFrame)="handleTimeFrameChange($event)"
+            ></time-intervals>
+
+            <p>
+                Max cars: <b>{{maxCars}}</b>
+                <br/>
+                at time: <b>{{timeFrames}}</b>
+            </p>
+        </div>
+    </div>
+</div>

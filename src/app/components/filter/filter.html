@@ -1,0 +1,9 @@
+<div class="time-filters">
+    <select [(ngModel)]="selectedStartTime" (ngModelChange)="changeTime()">
+        <option *ngFor="let time of timeframe">{{time}}</option>
+    </select>
+
+    <select [(ngModel)]="selectedEndTime" (ngModelChange)="changeTime()">
+        <option *ngFor="let time of timeframe">{{time}}</option>
+    </select>
+</div>
